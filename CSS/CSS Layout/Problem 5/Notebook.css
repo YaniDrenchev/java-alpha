@@ -1,0 +1,40 @@
+.Table
+    {
+        display: table;
+        border: 1px black;
+    }
+.Heading
+    {
+        display: table-row;
+        font-weight: bold;
+        text-align: center;
+        color: blue;
+        text-decoration: underline;
+    }
+.Row    
+    {
+        display: table-row;
+    }
+.Cell{
+        display: table-cell;
+}
+div:first-of-type{
+    border: black;
+}
+form{
+    position: relative;
+    top: -380px;
+    right: -480px;
+    width: 200px;
+}
+form input{
+    margin-bottom: 30px;
+}
+#content{
+    border: 1px solid black;
+    width: 630px;
+    height: 440px;
+}
+div.Table div.Row div.Cell{
+    padding-left: 5px;    
+}
