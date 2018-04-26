@@ -2,6 +2,7 @@ package com.company;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class Indices {
@@ -15,28 +16,50 @@ public class Indices {
             num.add(scan.nextInt());
         }
         int index = 0;
-        int x = 0;
-        int y = 0;
-        int current = 0;
-        ArrayList<String> result = new ArrayList<>();
-        result.add("0");
+
+        boolean loop = false;
+        String result = "";
+        ArrayList<Integer> numbers = new ArrayList<>();
+        if (num.get(0) != 0){
+            numbers.add(0);
+        }
+        HashSet<Integer> visited = new HashSet<>();
         while (index < num.size()) {
             if (num.get(index) < num.size()){
-                x = num.get(index);
-                result.add(String.valueOf(x));
+                if (visited.contains(num.get(index))) {
+                    loop = true;
+                    index = num.get(index);
+                    break;
+
+                }
+                numbers.add(num.get(index));
+                visited.add(index);
             }
-            if (current < index) {
-                result.add(current,")");
-                result.add(index,"(");
-                break;
-            } else if (num.get(index) > num.size()) {
+             else if (num.get(index) > num.size()) {
                 break;
             }
-            current = index;
             index = num.get(index);
         }
-        for (String aResult : result) {
-            System.out.print(aResult);
+
+        if(loop) {
+            for(int i = 0; i < numbers.size(); i++) {
+                int a = numbers.get(i);
+                if(index == a) {
+                    result +=("(");
+                }else {
+                    result+=(" ");
+                }
+                result += (String.valueOf(a));
+                if(i == numbers.size()-1) {
+                    result+=(")");
+                }
+            }
+        }else{
+            for (Integer number : numbers) {
+                result += (String.valueOf(number));
+            }
         }
+        result = result.trim();
+        System.out.println(result);
     }
 }

@@ -12,58 +12,26 @@ public class Joro_the_rabbit {
         for (String str : strs) {
             num.add(Integer.parseInt(str));
         }
-        int step = 1;
-        int position = 0;
-        int index = 0;
-        int route = 1;
         int MaxRoute = 0;
-        for (int i = 0; i < num.size() - 1; i++) {
-            step = 1;
-            route = 1;
-            index = i;
-            position = num.get(index);
-            for (int j = 0; j < num.size(); j++) {
-                route = 1;
-                index = i;
-                position = num.get(index);
-                for (int k = 0; k < num.size() ; k++) {
-                    if (index + step >= num.size()) {
-                        index = (step - (num.size() - index));
-                        if (position < num.get(Returnindex(index,num.size(),step))) {
-                            route++;
-                            position = Returnindex(index, num.size(), step);
-                            index += step;
-                            MaxRoute = Math.max(route, MaxRoute);
-                        } else {
-                            route = Math.max(route, MaxRoute);
-                            break;
-                        }
-                    } else {
-                        if (position < num.get(index + step)) {
-                            route++;
-                            position = num.get(index+step);
-                            index = index + step;
-                            MaxRoute = Math.max(route, MaxRoute);
-                        } else {
-                            MaxRoute = Math.max(route, MaxRoute);
-                            break;
-                        }
+        int index = 0;
+        int CurrRoute = 0;
+        for (int position = 0; position < num.size(); position++) {
+            for (int step = 1; step < num.size()+1; step++) {
+                CurrRoute = 0;
+                ArrayList<Integer> visited = new ArrayList<>();
+                index = position;
+                for (int i = 0; i <= num.size() ; i++){
+                    int nextIndex;
+                    CurrRoute++;
+                    nextIndex = (index + step) % num.size();
+                    if (num.get(nextIndex) <= num.get(index)){
+                        break;
                     }
+                    index = nextIndex;
                 }
-                step++;
-            }
-            if (route >= MaxRoute) {
-                MaxRoute = Math.max(route, MaxRoute);
+                MaxRoute = Math.max(CurrRoute, MaxRoute);
             }
         }
         System.out.println(MaxRoute);
-    }
-    static int Returnindex(int index, int size, int step){
-        if (index + step >= size){
-            index = (step - (size - index));
-            return index;
-        }else {
-            return index;
-        }
     }
 }
