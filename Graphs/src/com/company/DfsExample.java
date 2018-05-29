@@ -40,7 +40,7 @@ public class DfsExample {
         graph = new int [6][6];
         for (int i = 0; i < graph.length; i++) {
             for (int j = 0; j < graph[i].length; j++) {
-                graph[i][j] = 0;
+                graph[i][j] = -1;
             }
         }
         graph[0][1] = 1;
