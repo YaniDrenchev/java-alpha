@@ -1,0 +1,75 @@
+body{
+    font-size: 20px;
+}
+.images{
+    width: 30%;
+    height: 10%;
+}
+.images>img{
+    width: 200px;
+    height: 200px;
+}
+#ProfilPic{
+    border-radius: 50%;
+    height: 10%;    
+    margin: auto;
+    width: 15%;
+    border: 3px solid green;
+    padding: 10px;
+    
+}
+img:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+.image{
+    display: block;
+}
+img{
+    transition: transform .2s;
+}
+.image>.images{
+    display: inline-block;
+    width: 30%;
+    height: 40%;
+    
+}
+
+ol li {
+    display: inline-block;
+    list-style: none;
+    text-align: left;
+    color: yellow;
+    margin-right: 3%;
+}
+ol{
+    float: left;
+    width: 30%;
+    margin: 0;
+}
+footer{
+    margin-bottom: 5%;;
+}
+#allRightsReserved{
+    text-align: right;
+    float: right;
+}
+header{
+    text-align: center;
+}
+.container{
+    text-align: center;
+}
+html{
+    background-color: black;
+    color: white;
+}
+strong{
+    color: yellow;
+}
+header p {
+    width: 60%;
+    margin-left: 20%;
+}
+.container h3 {
+    color: yellow;
+}
