@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>HALOOOOO</p>
+</body>
+<script  src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $.get( "/api/blogposts", function( data ) {
+        data.forEach(function (post) {
+            var $doc = $('body');
+           $doc.append('<div>' + post.name + '</div>')
+        })
+    });
+</script>
+</html>

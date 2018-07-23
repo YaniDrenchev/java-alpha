@@ -13,15 +13,13 @@ import java.util.List;
 @RequestMapping("/api/blogposts")
 public class BlogPostController {
     private BlogService blogService;
-    private List<BlogPost> blogPosts = new ArrayList<>();
-//
-//    @Autowired
-//    public BlogPostController(BlogService blogService){
-//        this.blogService = blogService;
-//    }
+    @Autowired
+    public BlogPostController(BlogService blogService){
+        this.blogService = blogService;
+    }
     @RequestMapping
     List<BlogPost> listAll(){
-        return blogPosts;
+        return blogService.listall();
     }
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     BlogPost search(@PathVariable("id") String idString){
@@ -30,7 +28,6 @@ public class BlogPostController {
     }
     @RequestMapping(method = RequestMethod.POST, value = "/")
     void createBlogPost(@RequestBody BlogPost blogPost){
-
-        blogPosts.add(blogPost);
+        blogService.create(blogPost);
     }
 }

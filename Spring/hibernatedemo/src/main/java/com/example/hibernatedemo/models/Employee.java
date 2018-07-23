@@ -17,11 +17,6 @@ public class Employee {
     private String lastname;
     @Column(name = "jobTitle")
     private String jobTitle;
-
-    @OneToOne
-    @JoinColumn(name = "AddressId")
-    private Address address;
-
     public Employee(){
 
     }
@@ -67,6 +62,6 @@ public class Employee {
 
     @Override
     public String toString() {
-        return String.format("%s , %s, %s", firstname, lastname, address);
+        return String.format("%d, %s , %s,",id, firstname, lastname);
     }
 }

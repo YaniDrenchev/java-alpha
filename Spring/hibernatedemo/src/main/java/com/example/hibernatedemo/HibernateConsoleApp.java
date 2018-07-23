@@ -11,15 +11,7 @@ import java.util.List;
 
 public class HibernateConsoleApp {
     public static void main(String[] args) {
-        SessionFactory factory = new Configuration()
-                .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Town.class)
-                .addAnnotatedClass(Employee.class)
-                .addAnnotatedClass(Address.class)
-                .buildSessionFactory();
 
-        Session session = factory.openSession();
-        session.beginTransaction();
 //ADDING TO DB
 //        Employee newEmployee = new Employee("Petar", "Raykov", "project");
 //        session.save(newEmployee);
@@ -48,10 +40,6 @@ public class HibernateConsoleApp {
 //        session.getTransaction().commit();
 //        session.close();
 //        System.out.println(results);
-        List employees = session.createQuery("From Employee").list();
-        employees.stream().forEach(System.out::println);
-        session.getTransaction().commit();
-        session.close();
 
     }
 }
