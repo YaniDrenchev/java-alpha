@@ -1,15 +1,23 @@
 package com.example.hibernatedemo;
 
 import com.example.hibernatedemo.models.Employee;
-import com.example.hibernatedemo.web.services.EmployeeService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import com.example.hibernatedemo.services.EmployeeService;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.TemplateEngine;
+
+import javax.persistence.TableGenerator;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/employees")
+@Controller
+//@RequestMapping("/api/employees")
 public class EmployeeRestControler {
+
     private EmployeeService service;
     @Autowired
     public EmployeeRestControler(EmployeeService service) {
@@ -31,5 +39,12 @@ public class EmployeeRestControler {
     }
     @GetMapping("/update")
     public void update(@RequestParam(value = "id") String id,
-                       @RequestParam(value = "name") String name){}
+                       @RequestParam(value = "name") String name){
+
+    }
+
+    @GetMapping("/")
+    public  String index(){
+        return "index";
+    }
 }
